@@ -11,8 +11,8 @@ VALUES ("Customer Service Supervisor", 45000, 1),
     ("Sales Rep", 57000, 2),
     ("Senior Developer", 120000, 3),
     ("Junior Developer", 90000, 3),
-    ("Production Manager", 45000, 3),
-    ("Production Technicican", 40000, 3);
+    ("Production Manager", 45000, 4),
+    ("Production Technician", 40000, 4);
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUES ("John", "Doe", 1, NULL),
     ("Mike", "Chan", 2, 1),
