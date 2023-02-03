@@ -72,7 +72,7 @@ function companyViewer() {
 					addEmployee();
 					break;
 				case menuOptions[6]:
-					updateEmployee();
+					updateRole();
 					break;
 				case menuOptions[7]:
 					updateManager();
@@ -214,7 +214,7 @@ function addEmployee() {
 		});
 }
 
-function updateEmployee() {
+function updateRole() {
 	inquirer
 		.prompt([
 			{
@@ -229,35 +229,11 @@ function updateEmployee() {
 				name: "role",
 				choices: roleTitles,
 			},
-			{
-				type: "confirm",
-				message: "Does this employee have a manager?",
-				name: "manaCheck",
-			},
-			{
-				type: "list",
-				message: "Who is this employee's manager?",
-				name: "manager",
-				choices: employeeNames,
-				when(answer) {
-					return answer.manaCheck;
-				},
-			},
 		])
 		.then((res) => {
 			var empId = employees.find(({ employee }) => employee == `${res.employee}`).id;
 			var roleId = roles.find(({ title }) => title == `${res.role}`).id;
-			var manId;
-			if (res.manaCheck) {
-				manId = employees.find(({ employee }) => employee == `${res.manager}`).id;
-			} else {
-				manId = null;
-			}
-			db.query(`UPDATE employee SET role_id = ?, manager_id = ? WHERE id = ?`, [
-				roleId,
-				manId,
-				empId,
-			]);
+			db.query(`UPDATE employee SET role_id = ? WHERE id = ?`, [roleId, empId]);
 			queryEmployee();
 			companyViewer();
 		})
