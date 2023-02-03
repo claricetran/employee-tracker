@@ -37,7 +37,7 @@ In the console for the repository, run `node index.js`. This will initiate the a
 
 No license.
 
-## Credit
+## Credits
 
 [MySQL CONCAT Function](https://www.w3schools.com/sql/func_mysql_concat.asp)<br>
 [Tutorial on SQL Self JOIN](https://learnsql.com/blog/illustrated-guide-sql-self-join/)
