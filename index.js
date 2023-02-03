@@ -144,9 +144,7 @@ function addRole() {
 			},
 		])
 		.then((res) => {
-			console.log(`${res.department} was selected.`);
 			var deptId = departments.find(({ name }) => name == `${res.department}`).id;
-			console.log(`The department id is ${deptId}.`);
 			db.query(`INSERT INTO role (title, salary, department_id) VALUES (?,?,?)`, [
 				res.title,
 				res.salary,
@@ -203,7 +201,6 @@ function addEmployee() {
 			} else {
 				manId = null;
 			}
-			console.log(`${roleId} is the role id. ${manId} is the manager id.`);
 			db.query(
 				`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)`,
 				[res.first_name, res.last_name, roleId, manId]
