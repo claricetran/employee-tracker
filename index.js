@@ -37,7 +37,7 @@ function companyViewer() {
 		.prompt([
 			{
 				type: "list",
-				message: "Select one of the following menuOptions:",
+				message: "Select one of the following options:",
 				name: "menu",
 				choices: menuOptions,
 			},
@@ -164,7 +164,7 @@ function addEmployee() {
 		.prompt([
 			{
 				type: "input",
-				message: "Please enter the employee's first name",
+				message: "Please enter the employee's first name.",
 				name: "first_name",
 			},
 			{
@@ -197,7 +197,7 @@ function addEmployee() {
 			var roleId = roles.find(({ title }) => title == `${res.role}`).id;
 			var manId;
 			if (res.manaCheck) {
-				manId = employees.find(({ manager }) => manager == `${res.manager}`).id;
+				manId = employees.find(({ employee }) => employee == `${res.manager}`).id;
 			} else {
 				manId = null;
 			}
@@ -285,6 +285,9 @@ function updateManager() {
 				message: "Who should be the new manager for this employee?",
 				name: "manager",
 				choices: employeeNames,
+				when(answer) {
+					return answer.manaCheck;
+				},
 			},
 		])
 		.then((res) => {
